@@ -11,6 +11,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* background-color: #44484F;
+            color: white; */
         }
 
         header {
@@ -114,6 +116,14 @@
             max-width: 70%;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 0 auto;
+        }
+
+        .gallery-container-grid-2 {
+            max-width: 70%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             margin: 0 auto;
         }
@@ -237,7 +247,7 @@
         <p>After extensive research was conducted we decided to develop a survey to gain insights on potential decisions
             we were going to make regarding the development of the application. A Google Survey was created that
             contained a mix of multiple choice, short answer and long answer that aimed at collecting data for us to use
-            in our decision-making process. The survey and its disclosures can be seen here and below is our analysis of
+            in our decision-making process. The survey and its disclosures can be seen <!-- NEED TO ADD HYPERLINK TO PDF-->here and below is our analysis of
             the information collected. Finally, all information that was collected remains confidential and the
             participants could remain anonymous.</p>
         <p>The results of our survey have been divided into design and functionality-related questions for easier
@@ -246,6 +256,31 @@
         <p>Below are the results for all design-related questions of the survey. The information is displayed in pie
             charts to visualize the percentage weight of each answer.</p>
         <!--images here-->
+        <div class="gallery-container-grid-2">
+            <div class="gallery-item-grid" onclick="zoomImage2(this)">
+                <img src="./ImgSrc/SurveyDesign/SurveyDesign1.png" alt="Design Image 2.1">
+
+            </div>
+            <div class="gallery-item-grid">
+                <img src="./ImgSrc/SurveyDesign/SurveyDesign2.png" alt="Design Image 2.2">
+            </div>
+            <div class="gallery-item-grid">
+                <img src="./ImgSrc/SurveyDesign/SurveyDesign3.png" alt="Design Image 2.3">
+            </div>
+            <div class="gallery-item-grid">
+                <img src="./ImgSrc/SurveyDesign/SurveyDesign4.png" alt="Design Image 2.4">
+            </div>
+            <div class="gallery-item-grid">
+                <img src="./ImgSrc/SurveyDesign/SurveyDesign5.png" alt="Design Image 2.5">
+            </div>
+            <div class="gallery-item-grid">
+                <img src="./ImgSrc/SurveyDesign/SurveyDesign6.png" alt="Design Image 2.6">
+            </div>
+            <div class="gallery-item-grid">
+                <img src="./ImgSrc/SurveyDesign/SurveyDesign7.png" alt="Design Image 2.7">
+            </div>
+        </div>
+
         <p>From the data gathered for this part of the survey, it can be seen that the vast majority of people believe
             colour consistency is important when developing an application for the elderly. Furthermore, the best colour
             pallet to use is rainbow, this concurs with the research we conducted because it makes it easier to
@@ -483,7 +518,7 @@
             </div>
         </div>
         <h3>Color scheme</h3>
-        <div class="color-squares-container">
+        <div class="color-squares-container" style="color: black;">
             <div id="square1" class="color-square">
                 <div class="square-content">#f9f8eb</div>
             </div>
@@ -578,7 +613,7 @@
             const targetScroll = section.offsetTop + offset;
 
 
-            const scrollInterval = 100;
+            const scrollInterval = 300;
             let currentScroll = window.scrollY;
             let scrollDirection = currentScroll < targetScroll ? 1 : -1;
 
