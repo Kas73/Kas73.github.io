@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +12,30 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         header {
             background-color: #f9f8eb;
             color: #000000;
             text-align: center;
-            padding: 20px;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
+
         nav {
             background-color: #ede9da;
             overflow: hidden;
+            border: 2px outset #999;
+            border-radius: 8px;
+            position: fixed;
+            width: 100%;
+            top: 90px;
+            z-index: 1000;
+            font-size: larger;
         }
+
         nav a {
             float: left;
             display: block;
@@ -28,74 +43,178 @@
             text-align: center;
             padding: 8px 24px;
             text-decoration: none;
+            border-right: 2px outset #000000;
+            cursor: pointer;
         }
+
         nav a:hover {
             background-color: #ddd;
             color: black;
         }
+
         section {
             padding: 20px;
+            margin-top: 120px;
+            padding-left: 20%;
+            padding-right: 20%;
+            font-size: larger;
+            line-height: 2;
         }
+
         img {
             max-width: 100%;
             height: auto;
         }
-        .scrolling-container {
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-}
 
-.scrolling-container img {
-    display: inline-block;
-    max-width: 80%;
-    height: auto;
-    margin-right: 10px; /*spacing between images*/
-}
+        .zoomable-image {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+            transform-origin: center center;
+        }
+
+        .scrolling-container {
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            border: #000000 1px outset;
+        }
+
+        .scrolling-container img {
+            display: inline-block;
+            max-width: 80%;
+            height: auto;
+            margin-right: 10px;
+        }
     </style>
 </head>
+
 <body>
 
     <header>
-        <img src="" alt="Header Image">
+        <img src="" alt="">
         <h1>SOEN 357 UI Mini project</h1>
     </header>
 
     <nav>
-        <a href="#section1">Menu Item 1</a>
-        <a href="#section2">Menu Item 2</a>
-        <a href="#section3">Menu Item 3</a>
-        <a href="#section4">Menu Item 4</a>
+        <a onclick="scrollToSection('section1')">Introduction</a>
+        <a onclick="scrollToSection('section2')">Research</a>
+        <a onclick="scrollToSection('section3')">Personas</a>
+        <a onclick="scrollToSection('section4')">User flow</a>
+        <a onclick="scrollToSection('section5')">Sketches</a>
+        <a onclick="scrollToSection('section6')">Design</a>
+        <a onclick="scrollToSection('section7')">Conclusion</a>
     </nav>
 
     <section id="section1">
-        <h2>Section 1</h2>
+        <h2>Introduction</h2>
         <p>Text and images go here.</p>
+        <img src="image1.jpg" alt="Image 1">
+    </section>
+
+    <section id="section2">
+        <h2>Research</h2>
+        <p>More text and images for the second section.</p>
+        <img src="image2.jpg" alt="Image 2">
+    </section>
+
+    <section id="section3">
+        <h2>Personas</h2>
+        <p>To better understand the userbase of our app, we created some personas of the expected demographic. We made
+            sure to include a range of goals based off of our reseach. Furthermore, we included certain disabilities
+            that can be expected from senior citizens.</p>
         <div class="scrolling-container">
             <img src="./ImgSrc/Personas/Frankie.png" alt="Image 1.1">
             <img src="./ImgSrc/Personas/Ginette.png" alt="Image 1.2">
             <img src="./ImgSrc/Personas/Guillaume.png" alt="Image 1.3">
             <img src="./ImgSrc/Personas/Theresa.png" alt="Image 1.4">
         </div>
-    </section>
-
-    <section id="section2">
-        <h2>Section 2</h2>
-        <p>More text and images for the second section.</p>
-        <img src="image2.jpg" alt="Image 2">
-    </section>
-
-    <section id="section3">
-        <h2>Section 3</h2>
-        <p>Additional content for the third section.</p>
-        <img src="image3.jpg" alt="Image 3">
+        <h3>Frankie</h3>
+        <p>The first persona we made, Frankie, is a hard worker who likes to stay fit. He relies on others to help keep
+            him on track, be it with his medications or his appointments. His years working with heavy equipment has
+            rendered him hard of hearing. </p>
+        <h3>Ginette</h3>
+        <p>Ginette is a retiree with little remaining mobility. She's lived her whole life in french and would have a
+            hard time using an english application. She would like an app that not only helps her keep up her exercises
+            to improve her diminishing mobility, but would also require an app that caters to her degenerating sight.
+            All the while, she aims to make some friends adn keep in touch with her family.</p>
+        <h3>Guillaume</h3>
+        <p>Guillaume is the only young persona of the bunch. While we were thinking about the demographic of the app, a
+            thought came up: "Who else will use the app beside the elderly?". For this reason, we included a younger
+            person who might help their grandparent or an elder they know set up their account on the app.</p>
+        <h3>Theresa</h3>
+        <p>Finally there's Theresa, who represents an elder in the younger range, who wants an app to help keep her fit
+            and that keeps track of various merdications. She's pretty tech savvy and aims to reduce the cluter on her
+            phone by combining finding an app that combines multiple functionalities.</p>
     </section>
 
     <section id="section4">
-        <h2>Section 4</h2>
-        <p>Content for the fourth section.</p>
-        <img src="image4.jpg" alt="Image 4">
+        <h2>User flow</h2>
+        <h3>Journey map</h3>
+        <img class="zoomable-image" src="./ImgSrc/User journey map.png" alt="Image 4" onmousemove="zoomImage(event)">
+        <p>Hover to zoom in.<br><br>Above is the journey map of a given user.<br>It begins with their needs, what they're looking for the app to deliver. It then goes to the realization, where they realize that their needs can perhaps be met with an all in one app.
+        Following is the discovery of the app, where they find the app and decide to download it. They then set up and get to know the app. During their usage of the app, they determine whether their needs are met using the various functionalities of the app.
+        </p>
     </section>
 
+    <section id="section5">
+        <h2>Sketches</h2>
+        <p>Content for the fifth section.</p>
+        <img src="image5.jpg" alt="Image 5">
+    </section>
+
+    <section id="section6">
+        <h2>Design</h2>
+        <p>Content for the sixth section.</p>
+        <img src="image6.jpg" alt="Image 6">
+    </section>
+
+    <section id="section7">
+        <h2>Conclusion</h2>
+        <p>Content for the seventh section.</p>
+        <img src="image7.jpg" alt="Image 7">
+    </section>
+    
+        <script>
+            function zoomImage(event) {
+                const image = document.querySelector('.zoomable-image');
+                const boundingBox = image.getBoundingClientRect();
+
+                const x = (event.clientX - boundingBox.left) / boundingBox.width;
+                const y = (event.clientY - boundingBox.top) / boundingBox.height;
+
+                image.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+                image.style.transform = 'scale(2.5)';
+            }
+
+            document.querySelector('.zoomable-image').onmouseout = function () {
+                this.style.transform = 'scale(1)';
+            }
+
+            function scrollToSection(sectionId) {
+                const section = document.getElementById(sectionId);
+                const offset = -100; 
+                const targetScroll = section.offsetTop + offset;
+
+                
+                const scrollInterval = 15; 
+                let currentScroll = window.scrollY;
+                let scrollDirection = currentScroll < targetScroll ? 1 : -1;
+
+                function smoothScroll() {
+                    currentScroll += scrollDirection * scrollInterval;
+
+                    if ((scrollDirection === 1 && currentScroll >= targetScroll) || (scrollDirection === -1 && currentScroll <= targetScroll)) {
+                        window.scrollTo(0, targetScroll);
+                    } else {
+                        window.scrollTo(0, currentScroll);
+                        requestAnimationFrame(smoothScroll);
+                    }
+                }
+
+                smoothScroll();
+            }
+        </script>
 </body>
+
 </html>
