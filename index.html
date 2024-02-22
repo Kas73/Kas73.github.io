@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            
         }
 
         header {
@@ -189,7 +190,7 @@
     </header>
 
     <nav>
-        <a onclick="scrollToSection('section1')">Introduction</a>
+        <a onclick="scrollToSection('section1')">Problem</a>
         <a onclick="scrollToSection('section2')">Research</a>
         <a onclick="scrollToSection('section3')">Personas</a>
         <a onclick="scrollToSection('section4')">User flow</a>
@@ -199,9 +200,9 @@
     </nav>
 
     <section id="section1">
-        <h2>Introduction</h2>
-        <p>Text and images go here.</p>
-        <img src="image1.jpg" alt="Image 1">
+        <h2>Problem</h2>
+        <p>The elderly have limited social interaction because they don't go outside as much and this causes them to feel sad and lonely. Furthermore remaining healthy is a significant challenge once one is older with many not being able to track their medication and barely doing exercise contributing to their deteriorating health. Once the COVID-19 pandemic happened these problems were compounded to a greater extent making the situation for elderly people much more dire. Designing applications that the elderly can easily use is a challenge as well because they are not as adept with technology as younger generations. Finally, nowadays there are too many apps one must use to track their health and communicate so making an all-in-one app will both address the concerns of the elderly and make it easier to use.</p>
+        <p><br>We hope that Elderly Helperly will be the one-stop solution where elderly people can both improve their health, feel connected with their loved ones and interact more with their community.</p>
     </section>
 
     <section id="section2">
@@ -240,6 +241,7 @@
                 </div>
             </div>
         </div>
+        <p style="font-size: 20px; text-decoration: underline; margin-top: -20px;">Click to select panel.</p>
 
         <h3>Frankie</h3>
         <p>The first persona we made, Frankie, is a hard worker who likes to stay fit. He relies on others to help keep
@@ -264,7 +266,7 @@
         <h2>User flow</h2>
         <h3>Journey map</h3>
         <img class="zoomable-image" src="./ImgSrc/User journey map.png" alt="Image 4" onmousemove="zoomImage(event)">
-        <p>Hover to zoom in.</p>
+        <p style="font-size: 22px; text-decoration: underline;">Hover to zoom in.</p>
         <p>Above is the journey map of a given user.<br>It begins with their needs, what
             they're looking for the app to deliver. It then goes to the realization, where they realize that their needs
             can perhaps be met with an all in one app.
@@ -274,7 +276,7 @@
         </p>
         <h3>User flow</h3>
         <img class="zoomable-image" src="./ImgSrc/flowchart.PNG" alt="Image 5" onmousemove="zoomImage(event)">
-        <p>Hover to zoom in.</p>
+        <p style="font-size: 22px; text-decoration: underline;">Hover to zoom in.</p>
         <p>Flowchart text here</p>
     </section>
 
@@ -288,17 +290,22 @@
                 <div class="thumbnail-container">
                     <img class="thumbnail" src="./ImgSrc/Sketches/SketchesV1Page1.jpg" alt="Image 5.1"
                         onclick="showImageSKV1('./ImgSrc/Sketches/SketchesV1Page1.jpg')">
+                        <p class="thumbnail-text">Panel 1</p>
                 </div>
                 <div class="thumbnail-container">
                     <img class="thumbnail" src="./ImgSrc/Sketches/SketchesV1Page2.jpg" alt="Image 5.2"
                         onclick="showImageSKV1('./ImgSrc/Sketches/SketchesV1Page2.jpg')">
+                        <p class="thumbnail-text">Panel 2</p>
                 </div>
                 <div class="thumbnail-container">
                     <img class="thumbnail" src="./ImgSrc/Sketches/SketchesV1Page3.jpg" alt="Image 5.3"
                         onclick="showImageSKV1('./ImgSrc/Sketches/SketchesV1Page3.jpg')">
+                        <p class="thumbnail-text">Panel 3</p>
                 </div>
             </div>
         </div>
+        <p style="font-size: 20px; text-decoration: underline; margin-top: -20px;">Click to select panel.</p>
+
         <h3>Version 2</h3>
         <div class="gallery-container">
             <img class="main-image-sketches" id="mainImageSketchesV2" src="./ImgSrc/Sketches/SketchesV2Page4.jpg"
@@ -307,17 +314,22 @@
                 <div class="thumbnail-container">
                     <img class="thumbnail" src="./ImgSrc/Sketches/SketchesV2Page4.jpg" alt="Image 5.4"
                         onclick="showImageSKV2('./ImgSrc/Sketches/SketchesV2Page4.jpg')">
+                        <p class="thumbnail-text">Panel 1</p>
                 </div>
                 <div class="thumbnail-container">
                     <img class="thumbnail" src="./ImgSrc/Sketches/SketchesV2Page5.jpg" alt="Image 5.5"
                         onclick="showImageSKV2('./ImgSrc/Sketches/SketchesV2Page5.jpg')">
+                        <p class="thumbnail-text">Panel 2</p>
                 </div>
                 <div class="thumbnail-container">
                     <img class="thumbnail" src="./ImgSrc/Sketches/SketchesV2Page6.jpg" alt="Image 5.6"
                         onclick="showImageSKV2('./ImgSrc/Sketches/SketchesV2Page6.jpg')">
+                        <p class="thumbnail-text">Panel 3</p>
                 </div>
             </div>
         </div>
+        <p style="font-size: 20px; text-decoration: underline; margin-top: -20px;">Click to select panel.</p>
+
         <h3>Wireframe</h3>
         <div class="gallery-container-grid">
             <div class="gallery-item-grid">
@@ -355,7 +367,7 @@
             </div>
         </div>
         <h4>Wireframe flow</h4>
-        <img class="center-image" src="./ImgSrc/flow.jpg" alt="Flow Image">
+        <img class="center-image" src="./ImgSrc/flowWhite.png" alt="Flow Image">
     </section>
 
     <section id="section6">
@@ -430,22 +442,46 @@
     </section>
 
     <script>
+        let isScrolling = false;
+
+        function resetZoom(image) {
+            image.style.transform = 'scale(1)';
+        }
+
         function zoomImage(event) {
-            const image = event.target;
+            if (!isScrolling) {
+                const image = event.target;
+                const boundingBox = image.getBoundingClientRect();
 
-            const boundingBox = image.getBoundingClientRect();
+                const x = (event.clientX - boundingBox.left) / boundingBox.width;
+                const y = (event.clientY - boundingBox.top) / boundingBox.height;
 
-            const x = (event.clientX - boundingBox.left) / boundingBox.width;
-            const y = (event.clientY - boundingBox.top) / boundingBox.height;
-
-            image.style.transformOrigin = `${x * 100}% ${y * 100}%`;
-            image.style.transform = 'scale(2.5)';
+                image.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+                image.style.transform = 'scale(2.5)';
+            }
         }
 
         document.querySelectorAll('.zoomable-image').forEach(image => {
-            image.onmouseout = function () {
-                this.style.transform = 'scale(1)';
+            image.onmousemove = function (event) {
+                zoomImage(event);
             };
+
+            image.onmouseout = function () {
+                resetZoom(this);
+            };
+        });
+
+        window.addEventListener('scroll', function () {
+            isScrolling = true;
+
+            // Reset zoom for all images when scrolling starts
+            document.querySelectorAll('.zoomable-image').forEach(image => {
+                resetZoom(image);
+            });
+
+            setTimeout(function () {
+                isScrolling = false;
+            }, 1000); // Adjust the delay as needed
         });
 
         function scrollToSection(sectionId) {
