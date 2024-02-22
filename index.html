@@ -152,9 +152,15 @@
         <h2>User flow</h2>
         <h3>Journey map</h3>
         <img class="zoomable-image" src="./ImgSrc/User journey map.png" alt="Image 4" onmousemove="zoomImage(event)">
-        <p>Hover to zoom in.<br><br>Above is the journey map of a given user.<br>It begins with their needs, what they're looking for the app to deliver. It then goes to the realization, where they realize that their needs can perhaps be met with an all in one app.
-        Following is the discovery of the app, where they find the app and decide to download it. They then set up and get to know the app. During their usage of the app, they determine whether their needs are met using the various functionalities of the app.
+        <p>Hover to zoom in.<br><br>Above is the journey map of a given user.<br>It begins with their needs, what
+            they're looking for the app to deliver. It then goes to the realization, where they realize that their needs
+            can perhaps be met with an all in one app.
+            Following is the discovery of the app, where they find the app and decide to download it. They then set up
+            and get to know the app. During their usage of the app, they determine whether their needs are met using the
+            various functionalities of the app.
         </p>
+        <h3>User flow</h3>
+        <img class="zoomable-image" src="./ImgSrc/flowchart.PNG" alt="Image 5" onmousemove="zoomImage(event)">
     </section>
 
     <section id="section5">
@@ -174,47 +180,50 @@
         <p>Content for the seventh section.</p>
         <img src="image7.jpg" alt="Image 7">
     </section>
-    
-        <script>
-            function zoomImage(event) {
-                const image = document.querySelector('.zoomable-image');
-                const boundingBox = image.getBoundingClientRect();
 
-                const x = (event.clientX - boundingBox.left) / boundingBox.width;
-                const y = (event.clientY - boundingBox.top) / boundingBox.height;
+    <script>
+        function zoomImage(event) {
+        const image = event.target;
 
-                image.style.transformOrigin = `${x * 100}% ${y * 100}%`;
-                image.style.transform = 'scale(2.5)';
-            }
+        const boundingBox = image.getBoundingClientRect();
 
-            document.querySelector('.zoomable-image').onmouseout = function () {
-                this.style.transform = 'scale(1)';
-            }
+        const x = (event.clientX - boundingBox.left) / boundingBox.width;
+        const y = (event.clientY - boundingBox.top) / boundingBox.height;
 
-            function scrollToSection(sectionId) {
-                const section = document.getElementById(sectionId);
-                const offset = -100; 
-                const targetScroll = section.offsetTop + offset;
+        image.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+        image.style.transform = 'scale(2.5)';
+    }
 
-                
-                const scrollInterval = 15; 
-                let currentScroll = window.scrollY;
-                let scrollDirection = currentScroll < targetScroll ? 1 : -1;
+    document.querySelectorAll('.zoomable-image').forEach(image => {
+        image.onmouseout = function () {
+            this.style.transform = 'scale(1)';
+        };
+    });
 
-                function smoothScroll() {
-                    currentScroll += scrollDirection * scrollInterval;
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const offset = -100;
+            const targetScroll = section.offsetTop + offset;
 
-                    if ((scrollDirection === 1 && currentScroll >= targetScroll) || (scrollDirection === -1 && currentScroll <= targetScroll)) {
-                        window.scrollTo(0, targetScroll);
-                    } else {
-                        window.scrollTo(0, currentScroll);
-                        requestAnimationFrame(smoothScroll);
-                    }
+
+            const scrollInterval = 60;
+            let currentScroll = window.scrollY;
+            let scrollDirection = currentScroll < targetScroll ? 1 : -1;
+
+            function smoothScroll() {
+                currentScroll += scrollDirection * scrollInterval;
+
+                if ((scrollDirection === 1 && currentScroll >= targetScroll) || (scrollDirection === -1 && currentScroll <= targetScroll)) {
+                    window.scrollTo(0, targetScroll);
+                } else {
+                    window.scrollTo(0, currentScroll);
+                    requestAnimationFrame(smoothScroll);
                 }
-
-                smoothScroll();
             }
-        </script>
+
+            smoothScroll();
+        }
+    </script>
 </body>
 
 </html>
